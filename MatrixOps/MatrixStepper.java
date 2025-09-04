@@ -69,7 +69,7 @@ public class MatrixStepper{
    private void step(Scanner scnr){
       String[] input = scnr.nextLine().split(" "); //grab the input
       boolean div, add;
-      deepCopy(matrix, undo); //save it
+      //deepCopy(matrix, undo); //save it
       switch (input.length){ //remember that rows are 1 indexed, so compensate
          case 1:
             deepCopy(matrix, undo);
@@ -81,9 +81,9 @@ public class MatrixStepper{
             div = input[2].charAt(0) == 't';
             rowMult(Integer.parseInt(input[0])-1, Integer.parseInt(input[1]), div);
             break;
-         case 4:
-            div = input[2].charAt(0) == 't';
-            add = input[3].charAt(0) == 't';
+         case 5:
+            div = input[3].charAt(0) == 't';
+            add = input[4].charAt(0) == 't';
             rowOpThree(Integer.parseInt(input[0])-1, Integer.parseInt(input[1])-1, Integer.parseInt(input[2]), div, add);
             break;
       }
@@ -150,6 +150,8 @@ public class MatrixStepper{
       if(divide){
          if(!checkDiv(matrix[toolRow], mult)) {return;} //exit early if you can't do that
       }
+
+      System.out.println(target +" ");
       
       int[] tool = new int[matrix[toolRow].length]; //temp array to store modified values
       for(int i = 0; i < matrix[toolRow].length; i++){
