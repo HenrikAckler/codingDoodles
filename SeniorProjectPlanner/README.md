@@ -15,3 +15,6 @@ The first attempt of this project will use a set of `Student` objects, with the 
  - Each student has an array of size `r` containing their project rankings, where the index of the element is their ranking.
  - Each student has an array of size `v` containing their vetos in the form of object pointers to other students.
  - Each student must have a name that is used in an overridden compareTo method.
+ - Each student must have a compatibility ranker. This will return -1 if on the veto list, otherwise tally points based on matching project preference, with more weight to higher rated projects.
+
+ We will then have `Team` objects, containing `s/p` `Students` and capable of returning a compatibility of all members with eachother. 

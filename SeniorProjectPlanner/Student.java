@@ -36,4 +36,44 @@ public class Student{
          veto[i] = vs[i];
       }
    }
+
+   public String getName(){
+      return name;
+   }
+
+   public String[] getProjs(){
+      return projects;
+   }
+
+   public Student[] getVetos(){
+      return veto;
+   }
+
+   public boolean equals(Student s){
+      return name.equals(s.getName());
+   }
+
+   public int getCompatibility(Student s){
+      //check if this vetos s
+      for(Student x : veto){
+         if (x.equals(s)) return -1;
+      }
+      //check if s vetos this
+      for(Student x : s.getVetos()){
+         if (this.equals(x)) return -1;
+      }
+
+      //find ranked compatibility
+      int rank = 0;
+      String[] sProj = s.getProjs();
+      for (int i = 0; i < projects.length; i++){
+         for(int j = 0; j < sProj.length; j++){
+            if(projects[i].equals(sProj[j])){
+               rank += i + j; //add the rank values
+            }
+         }
+      }
+
+      return rank;
+   }
 }
